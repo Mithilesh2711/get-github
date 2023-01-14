@@ -2,7 +2,6 @@ import {React, useState} from "react";
 import Loader from "./loader";
 import UserDetails from "./userdetails";
 import axios from "axios";
-const dotenv = require('dotenv');
 
 export default () => {
 
@@ -26,10 +25,9 @@ export default () => {
         e.preventDefault();
         setUserId('');
         setLoad(true);
-        await axios.get(`/user/${username}`)
-        .then((res)=>res.json())
+        await fetch(`http://localhost:3002/user/${username}`)
+        .then((res) => res.json())
         .then((res) => {
-            console.log("res",res.data);
             if(res.message==="success"){
                 setAvatar_url(res.data.avatar_url);
                 setBio(res.data.bio);
@@ -60,7 +58,11 @@ export default () => {
             <a class="navbar-brand">Get Github</a>
             <form onSubmit={handleSubmit} class="form-inline">
                 <input value={username} onChange={(e) => setUsername(e.target.value)} class="form-control mr-sm-2" type="search" placeholder="Github Username" aria-label="Search" />
+                {username.length>0?
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                :
+                <button class="btn btn-outline-success my-2 my-sm-0" disabled type="submit">Search</button>
+                }
             </form>
             </nav>
 

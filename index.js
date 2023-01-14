@@ -11,14 +11,14 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3005
+const PORT = process.env.PORT || 3002;
 
 var resp = {}
 
 if ( process.env.NODE_ENV === "production"){ 
     app.use(express.static("client/build")); 
     const path = require("path"); 
-    app.get("*", (req, res) => { 
+    app.get("/", (req, res) => { 
         res.sendFile(path.resolve(__dirname, 'client', 'build')); 
     })
 }
@@ -84,6 +84,8 @@ app.get('/user/:userId', async (req,res) => {
 })
 
 
-app.listen(process.env.PORT, ()=>{
+app.listen(PORT, ()=>{
     console.log('Server listening on ', PORT);
 })
+
+module.exports = app;

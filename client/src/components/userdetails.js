@@ -54,9 +54,9 @@ export default (props) => {
             :
             <></>
             }
-            <a class="link-primary" href={props.html_url}><h4>{props.userId}</h4></a>
+            <a target="_blank" class="link-primary" href={props.html_url}><h4>{props.userId}</h4></a>
             {props.bio?<p><strong>Bio : </strong>{props.bio}</p>:<></>}
-            {props.twitter_username?<p><strong>Twitter: <a class="link-primary" href={twitter_url}>{props.twitter_username}</a></strong></p>:<></>}
+            {props.twitter_username?<p><strong>Twitter: <a target="_blank" class="link-primary" href={twitter_url}>{props.twitter_username}</a></strong></p>:<></>}
             <p><strong>Followers: {props.followers} &nbsp;&nbsp; Public Repos: {props.public_repos} &nbsp;&nbsp;   Following: {props.following}</strong></p>
         </div>
         </div>
@@ -68,9 +68,9 @@ export default (props) => {
             <ul style={{"listStyle": "none"}} class="d-flex justify-content-center">
                 <li class="page-item">
                     {page==0?
-                    <a class="anchors page-link"> &lt; Previous</a>
+                    <a target="_blank" class="anchors page-link"> &lt; Previous</a>
                     :
-                    <a  onClick={(e) => {setPage(parseInt(page)-1)}} class="anchors page-link" href="#"> &lt; Previous</a>
+                    <a target="_blank"  onClick={(e) => {setPage(parseInt(page)-1)}} class="anchors page-link" href="#"> &lt; Previous</a>
                     }
                 </li>
 
@@ -78,9 +78,9 @@ export default (props) => {
 
                 <li class="page-item">
                     {page==Math.ceil((props.public_repos-1)/10)-1?
-                    <a  class="anchors page-link"> Next &gt;</a>
+                    <a target="_blank"  class="anchors page-link"> Next &gt;</a>
                     :
-                    <a onClick={(e) => {setPage(parseInt(page)+1)}} class="anchors page-link" href="#"> Next &gt;</a>                    
+                    <a target="_blank" onClick={(e) => {setPage(parseInt(page)+1)}} class="anchors page-link" href="#"> Next &gt;</a>                    
                     }
                     
                 </li>
