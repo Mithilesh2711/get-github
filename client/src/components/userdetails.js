@@ -26,7 +26,7 @@ export default (props) => {
             if(idx<page*10+11  && idx>=page*10+1)
             return (
             <div key={idx} className="card" style={{ width: "40%", marginBottom: "20px" }}>
-                <div class="card-header"><a href={repo.html_url}>{repo.name}</a></div>
+                <div class="card-header"><a target="_blank" href={repo.html_url}>{repo.name}</a></div>
                 <div class="card-body">
                     <p class="card-title">{repo.description}</p>
                     {repo.topics.map((topic, index) => 
